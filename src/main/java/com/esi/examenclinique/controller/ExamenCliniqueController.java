@@ -8,37 +8,38 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("EC")
 public class ExamenCliniqueController {
 
     @Autowired
     private ExamenCliniqueService examenCliniqueService;
 
-    @PostMapping("/addEC")
+    @PostMapping("/add")
     public ExamenClinique addExamenClinique(@RequestBody ExamenClinique examenClinique){
         return examenCliniqueService.saveExamenClinique(examenClinique);
     }
-    @PostMapping("/addECs")
+    @PostMapping("/addAll")
     public List<ExamenClinique> addExamensCliniques(@RequestBody List<ExamenClinique> examensCliniques){
         return examenCliniqueService.saveExamensCliniques(examensCliniques);
     }
 
-    @GetMapping("/ECs")
+    @GetMapping("/all")
     public List<ExamenClinique> getExamensCliniques(){
         return examenCliniqueService.getExamensCliniques();
     }
 
-    @GetMapping("/EC/{id}")
+    @GetMapping("/{id}")
     public ExamenClinique getExamenCliniqueById(@PathVariable(name = "id") Long idEC){
         return examenCliniqueService.getExamenCliniqueById(idEC);
     }
 
-    @PutMapping("/updateEC")
+    @PutMapping("/update")
     public ExamenClinique updateExamenClinique(@RequestBody ExamenClinique examenClinique){
 
         return examenCliniqueService.updateExamenClinique(examenClinique);
     }
 
-    @DeleteMapping("/deleteEC/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteExamenClinique(@PathVariable(name = "id") Long idEC){
         return examenCliniqueService.deleteExamenClinique(idEC);
     }
